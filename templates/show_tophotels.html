@@ -1,0 +1,38 @@
+{% include 'header1.html' %}
+<div align="right">
+<form method="GET" action="{% url 'show_tophotels' %}">
+    <input type="text" name="place" placeholder="Search by place...">
+    <button type="submit">Search</button>
+</form>
+</div>
+<section class="top_place section_padding">
+    <h2 align="center">Top Hotels to visit</h2>
+    <div class="col-xl-6">
+        <div class="section_tittle text-center">
+            <p>Waters make fish every without firmament saw had. Morning air subdue. Our. Air very one. Whales grass is fish whales winged.</p>
+        </div>
+    </div>
+          {% for hotel in tophotels %}
+        <div class="container" >
+            <div class="row justify-content-center">
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_place border border-primary">
+                        <img src="{{ hotel.photo.url }}" alt="{{ hotel.title }}">
+                                <h3>{{ hotel.title }}</h3>
+
+                                    <p>{{ hotel.description }}</p>
+                                    <p><strong>Place:</strong> {{ hotel.place }}</p>
+                                    <p><strong>Style:</strong> {{ hotel.style }}</p>
+                                    <p><strong>Attractions:</strong> {{ hotel.Attractions }}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+           {% endfor %}
+</section>
+
+{% include 'footer.html' %}

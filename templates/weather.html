@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+</head>
+<body>
+    <div align="right">
+        <form id="weatherForm">
+            <input type="text" id="cityInput" placeholder="Search by city...">
+            <button type="submit">Weather</button>
+        </form>
+    </div>
+
+    <div id="weatherInfo" style="margin-top: 20px;"></div>
+
+    <script>
+        document.getElementById("weatherForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var city = document.getElementById("cityInput").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/weather");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById("weatherInfo").innerText = xhr.responseText;
+                } else {
+                    console.error("Request failed with status:", xhr.status);
+                }
+            };
+            xhr.send("city=" + encodeURIComponent(city));
+        });
+    </script>
+</body>
+</html>

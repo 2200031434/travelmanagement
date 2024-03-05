@@ -1,0 +1,34 @@
+{% include 'header1.html' %}
+
+
+<section class="top_place section_padding">
+    <h2 align="center">Top Places to visit</h2>
+    <div class="col-xl-6">
+        <div class="section_tittle text-center">
+            <p>Waters make fish every without firmament saw had. Morning air subdue. Our. Air very one. Whales grass is fish whales winged.</p>
+        </div>
+    </div>
+          {% for place in topplaces %}
+        <div class="container" >
+            <div class="row justify-content-center">
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_place border border-primary">
+                        <img src="{{ place.photo.url }}" alt="{{ place.title }}">
+                                <h3>{{ place.title }}</h3>
+
+                                    <p>{{ place.description }}</p>
+                                    <p><strong>Best Time to Visit:</strong> {{ place.TimetoVisit }}</p>
+                                    <p><strong>How to Reach:</strong> {{ place.HowtoReach }}</p>
+                                    <p><strong>Attractions:</strong> {{ place.Attractions }}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+           {% endfor %}
+</section>
+
+{% include 'footer.html' %}
